@@ -69,7 +69,7 @@ export default function UserQuery() {
           type="submit"
           className={classNames(
             " text-center  text-gray-600 dark:text-white transition inline-flex items-center justify-center py-2 px-2 rounded-md",
-            { "bg-green-500 dark:text-gray-200 text-white": query }
+            { "bg-primary dark:text-gray-200 text-white": query }
           )}
         >
           <IonIcon icon={query ? send : sendOutline} />

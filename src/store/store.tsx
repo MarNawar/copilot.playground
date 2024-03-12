@@ -348,7 +348,7 @@ const useSettings = createWithEqualityFn<SettingsType>()(
 const useTheme = create<ThemeType>()(
   persist(
     (set) => ({
-      theme: "dark",
+      theme: "light",
       setTheme: (theme) => {
         set(
           produce((state) => {

@@ -5,14 +5,14 @@ export default function ChatHistory() {
   const chatsHistory = useChat(selectChatsHistory);
 
   return (
-    <div className="my-4 text-[#ECECF1] px-2 h-full">
+    <div className="my-4 text-black dark:text-[#ECECF1] px-2 h-full">
       {Object.keys(chatsHistory).length > 0 &&
         Object.keys(chatsHistory)
           .sort((a, b) => priority.indexOf(a) - priority.indexOf(b))
           .map((month) => {
             return (
               <div key={month}>
-                <h3 className=" text-sm my-2 text-[#8E8EA0] pl-2">{month}</h3>
+                <h3 className=" text-sm my-2 text-black dark:text-[#8E8EA0] pl-2">{month}</h3>
                 {chatsHistory[month].map((chatId, i) => (
                   <ChatRef key={chatId.id + i} chat={chatId} />
                 ))}

@@ -31,15 +31,16 @@ function App() {
   return (
     <div className="App  font-montserrat md:flex ">
       <Navbar active={active} setActive={setActive} />
-      <div className="">
+      <div className={`${active&&"opacity-0"} transition-opacity duration-500 `}>
         <button
           type="button"
-          className="shadow fixed p-2 h-8 w-8 text-sm top-4 left-4 border-2 hidden md:inline-flex dark:text-white text-gray-700 dark:border border-gray-400 rounded-md items-center justify-center"
+          className={`shadow fixed p-2 h-8 w-8 text-sm top-4 left-4 border-2 ${active&&"hidden"} md:inline-flex dark:text-white text-gray-700 dark:border border-gray-400 rounded-md items-center justify-center`}
           onClick={() => setActive(true)}
         >
-          <i className="fa-regular fa-window-maximize rotate-90"></i>
+          <i className="fa-regular fa-window-maximize rotate-90 z-10"></i>
         </button>
       </div>
+
       <div className="p-3 z-10 flex items-center justify-between bg-[#202123] dark:bg-[#343541] border-b sticky top-0  text-gray-300 md:hidden">
         <button onClick={() => setActive(true)} className=" text-2xl flex">
           <IonIcon icon={menuOutline} />
@@ -49,6 +50,7 @@ function App() {
           <IonIcon icon={addOutline} />
         </button>
       </div>
+      
       <main
         className={classNames(" w-full transition-all duration-500", {
           "md:ml-[260px]": active,
@@ -66,30 +68,23 @@ function App() {
           )}
         >
           <div className="max-w-2xl md:max-w-[calc(100% - 260px)] mx-auto">
-            {!isChatsVisible && (
+            {/* {!isChatsVisible && (
               <>
                 <DefaultIdeas />
               </>
-            )}
+            )} */}
 
             <div className="dark:bg-inherit">
               <UserQuery />
               <footer className="info text-sm py-2 text-gray-700 dark:text-white text-center">
-                Made With
-                <span className="mx-2">
-                  <i
-                    className="fas fa-heart text-red-500"
-                    aria-hidden="true"
-                  ></i>
-                </span>
-                By
+                © All Copyrights are reserved by
                 <a
-                  href="https://www.prasadbro.com/"
+                  href="http://dashboard.yogleads.in/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ml-2 underline"
                 >
-                  Prasadbro
+                  YogLeads
                 </a>
               </footer>
             </div>

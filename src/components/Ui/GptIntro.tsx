@@ -2,6 +2,7 @@ import { IonIcon } from "@ionic/react";
 import { sparkles } from "ionicons/icons";
 import { useSettings } from "../../store/store";
 import classNames from "classnames";
+// import logo from "../../assets/images/Salevant_logo_White_bg.png"
 
 export default function GptIntro() {
   const [selectedModel, setModel] = useSettings((state) => [
@@ -11,7 +12,7 @@ export default function GptIntro() {
   const isGptThreeSelected = selectedModel.startsWith("gpt-3");
   return (
     <>
-      <div className="modals md:w-1/5 md:min-w-[300px] mx-2 relative flex items-center rounded-md justify-between mt-5 md:mx-auto  bg-gray-200 dark:bg-[#202123] gap-2">
+      {/* <div className="modals md:w-1/5 md:min-w-[300px] mx-2 relative flex items-center rounded-md justify-between mt-5 md:mx-auto  bg-gray-200 dark:bg-[#202123] gap-2">
         <button
           title="GPT-3 Turbo"
           className={classNames(
@@ -56,10 +57,14 @@ export default function GptIntro() {
           </span>
           <span className="mr-2">gpt - 4</span>
         </button>
-      </div>
-      <div className=" h-96 flex items-start justify-center">
+
+      </div> */}
+      <div className=" h-96 flex  items-start justify-center">
+        {/* <div>
+          <img src={logo} alt="LOGO" className="w-52" />
+        </div> */}
         <h1 className=" text-4xl font-bold mt-5 text-center text-gray-300">
-          ChatGPT
+          Salevant AI
         </h1>
       </div>
     </>

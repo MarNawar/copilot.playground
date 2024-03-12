@@ -77,7 +77,7 @@ export default function UserMessage({ chat, chatIndex }: Props) {
       {edit && (
         <div className=" max-w-2xl mx-auto flex items-center group justify-center font-bold mt-4">
           <button
-            className=" p-2 bg-teal-600 hover:bg-teal-700 focus:border-2  rounded-md text-white mr-2 "
+            className=" p-2 bg-blue-500 hover:bg-blue-600 focus:border-2  rounded-md text-white mr-2 "
             onClick={handelChatEdit}
           >
             Save & submit

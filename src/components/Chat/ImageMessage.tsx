@@ -6,7 +6,7 @@ import ImageSkeleton from "../Skeleton/ImageSkeleton";
 import { downloadOutline, checkmarkOutline } from "ionicons/icons";
 import { useState } from "react";
 import { ChatMessageType } from "../../store/store";
-
+import logo from "../../assets/images/logo-rounded.png"
 type Props = {
   index: number;
   chat: ChatMessageType;
@@ -24,7 +24,7 @@ export default function ImageMessage({ index, chat }: Props) {
   return (
     <div className="flex items-start w-full">
       <div className="mr-4  rounded-md flex items-center flex-shrink-0">
-        <Avatar className=" h-11 w-11" src="/imgs/bot.webp" />
+        <Avatar className=" h-11 w-11" src={logo} />
       </div>
       <div className=" image border-4 border-teal-700 rounded flex-grow">
         {loading && (

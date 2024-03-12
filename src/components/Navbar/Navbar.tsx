@@ -9,10 +9,11 @@ import {
   ellipsisHorizontalOutline,
   closeOutline,
 } from "ionicons/icons";
-import useChat, { ModalList, useAuth, useSettings } from "../../store/store";
+import useChat, { useTheme,ModalList, useAuth, useSettings } from "../../store/store";
 import Settings from "../modals/Settings";
 import Modal from "../modals/Modal";
 import SystemMessage from "../modals/SystemMessage";
+import { useEffect } from "react";
 
 export default function Navbar({
   active,
@@ -50,18 +51,27 @@ export default function Navbar({
     },
     {}
   );
+  const [theme] = useTheme((state) => [state.theme]);
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   return (
     <>
       <div
         className={classnames(
-          "navwrap fixed duration-500 top-0 left-0 bottom-0 right-0 md:right-[calc(100vw-260px)] z-30 bg-gray-500 md:bg-opacity-0 ",
+          "navwrap fixed duration-500 top-0 left-0 bottom-0 right-0 md:right-[calc(100vw-260px)] z-30 bg-gray-500 md:bg-opacity-0",
           { "bg-opacity-60 ": active, "opacity-0 pointer-events-none": !active }
         )}
       >
+        
         <nav
           className={classnames(
-            " absolute left-0 bottom-0 top-0  md:flex-grow-1 w-9/12 md:w-[260px] bg-[#202123] text-white z-10 flex flex-col transition duration-500",
+            " absolute left-0 bottom-0 top-0  md:flex-grow-1 w-9/12 md:w-[260px] dark:bg-[#202123] text-black dark:text-white  z-10 flex flex-col transition duration-500",
             { "translate-x-0": active, "-translate-x-[150%]": !active }
           )}
         >
@@ -78,7 +88,7 @@ export default function Navbar({
             </button>
             <button
               type="button"
-              className="border h-10 w-10 border-gray-500 rounded-md p-2 hidden md:inline-block text-gray-200"
+              className="border h-10 w-10 border-gray-500 rounded-md p-2 hidden md:inline-block text:black dark:text-gray-200"
               onClick={() => setActive(false)}
             >
               <i className="fa-regular fa-window-maximize rotate-90"></i>
@@ -87,8 +97,8 @@ export default function Navbar({
           <div className="history overflow-y-auto h-[calc(100%-60px)]">
             <ChatHistory />
           </div>
-          <div className="account  font-bold  z-20 bg-[#202123] border-t border-gray-500 shadow  ">
-            <div className=" self-stretch mr-4 w-full mb-2">
+          <div className="account  font-bold  z-20 dark:bg-[#202123] border-t border-gray-100 dark:border-gray-500 shadow  ">
+            {/* <div className=" self-stretch mr-4 w-full mb-2">
               <select
                 value={selectedModal}
                 onChange={(e) => setModal(e.target.value as ModalList)}
@@ -108,11 +118,11 @@ export default function Navbar({
                   </optgroup>
                 ))}
               </select>
-            </div>
+            </div> */}
             <div className="[&>.options]:focus-within:visible">
               <button
                 type="button"
-                className="px-2 relative py-2 inline-flex w-full items-center hover:bg-gray-700 transition group "
+                className="px-2 relative py-2 inline-flex w-full items-center hover:bg-primary-light dark:hover:bg-gray-700 transition group "
               >
                 <Avatar className=" h-11 w-11" />
 
@@ -121,9 +131,9 @@ export default function Navbar({
                   <IonIcon icon={ellipsisHorizontalOutline} />
                 </span>
               </button>
-              <div className="options absolute bottom-12 rounded-md left-0 right-0 bg-gray-800 font-normal invisible transition  m-2 z-30 text-gray-300 ">
+              <div className="options absolute bottom-12 rounded-md left-0 right-0 border-2 border-gray-300 dark:bg-gray-800 font-normal invisible transition  m-2 z-30 dark:text-gray-300 ">
                 <button
-                  className=" p-2   hover:bg-gray-700 w-full text-left flex items-center"
+                  className=" p-2 hover:bg-primary-light  dark:hover:bg-gray-700 w-full text-left flex items-center"
                   onClick={() => setSystemMessageModalVisible(true)}
                 >
                   <span className="mr-2 p-1 text-xl  flex items-center">
@@ -132,7 +142,7 @@ export default function Navbar({
                   <span>Custom instructions</span>
                 </button>
                 <button
-                  className=" p-2   hover:bg-gray-700 w-full text-left flex items-center"
+                  className=" p-2 hover:bg-primary-light  dark:hover:bg-gray-700 w-full text-left flex items-center"
                   onClick={() => setModalVisible(true)}
                 >
                   <span className="mr-2 p-1  text-xl flex items-center">

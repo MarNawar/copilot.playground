@@ -7,7 +7,7 @@ import {
   closeOutline,
 } from "ionicons/icons";
 
-import useChat, { isChatSelected } from "../../store/store";
+import useChat, { isChatSelected, useTheme } from "../../store/store";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import Modal from "../modals/Modal";
@@ -46,13 +46,22 @@ export default function ChatRef({
     deleteChat(id);
     setConfirmDeleteChat(false);
   }
+  const [theme] = useTheme((state) => [state.theme]);
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   return (
     <div
       className={classNames(
-        "btn-wrap flex items-center w-full p-1 rounded-md text-xl font-bold  hover:bg-[#40414f]",
-        { "bg-[#40414f]": isSelected }
+        "btn-wrap flex items-center w-full p-1 rounded-md text-xl font-semibold", {"hover:bg-primary-light dark:hover:bg-gray-800":!isSelected},
+        { "bg-primary dark:bg-gray-800": isSelected }
       )}
+    
     >
       {!isTitleEditeble && (
         <button
@@ -73,7 +82,7 @@ export default function ChatRef({
         <input
           type="text"
           value={editTitle}
-          className=" bg-inherit border border-blue-400 w-4/5 ml-2 p-1 outline-none"
+          className="rounded-lg px-2 py-2 text-sm bg-inherit border border-gray-900 w-4/5 ml-2 p-1 outline-none"
           autoFocus
           onChange={(e) => setEditTitle(e.target.value)}
         />
