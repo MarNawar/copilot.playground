@@ -7,6 +7,7 @@ import moment from "moment";
 import { ImageSize } from "../services/chatService";
 
 const modalsList = [
+  "salvent-ai",
   "gpt-3.5-turbo",
   "gpt-3.5-turbo-1106",
   "gpt-3.5-turbo-16k-0613",
@@ -269,7 +270,7 @@ const useSettings = createWithEqualityFn<SettingsType>()(
         sendChatHistory: false,
         systemMessage: "",
         useSystemMessageForAllChats: false,
-        selectedModal: "gpt-3.5-turbo",
+        selectedModal: "salvent-ai",
         dalleImageSize: { "dall-e-2": "256x256", "dall-e-3": "1024x1024" },
       },
       modalsList: modalsList,
